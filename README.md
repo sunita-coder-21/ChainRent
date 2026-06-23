@@ -1,7 +1,7 @@
-# ChainRent
+# [ChainRent](https://chainrent.netlify.app/)
 Secure Rental Agreements. Trustless Deposits.
 
-**[Watch the Stellar Demo Video]( )**
+**[Watch the Stellar Demo Video](https://drive.google.com/file/d/1Z9ZvsF9TzfIZqCQStb6zPhQF1XIKs3nN/view?usp=drivesdk/)**
 
 ## Problem Statement
 
@@ -51,7 +51,7 @@ ChainRent is a Stellar-powered rental management platform that uses Soroban Smar
 ### DevOps
 
 - GitHub Actions
-- Vercel
+- Netlify
 
 ## Architecture
 
