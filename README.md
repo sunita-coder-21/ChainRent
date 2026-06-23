@@ -1,113 +1,180 @@
-# ChainRent — Soroban Level 3 Web3 Rental Platform
+# ChainRent
+Secure Rental Agreements. Trustless Deposits.
 
-[![Build and Test](https://github.com/arya-bhagat/chainrent/actions/workflows/ci.yml/badge.svg)](https://github.com/arya-bhagat/chainrent/actions/workflows/ci.yml)
-[![Soroban v22](https://img.shields.io/badge/Soroban-v22-blue.svg)](https://soroban.stellar.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+**[Watch the Stellar Demo Video]( )**
 
-ChainRent is a decentralized rental management dApp built on the **Stellar network** using **Soroban smart contracts (v22)**. It provides a secure, trustless system for leasing properties, locking security deposits in escrow, tracking automated rent payments, and updating landlord/tenant reputation scores based on contract settlements.
+## Problem Statement
 
----
+Rental agreements often suffer from security deposit disputes, delayed settlements, and a lack of transparency between landlords and tenants.
 
-## 🏗️ Smart Contract Architecture
+Traditional systems rely on trust, making it difficult to fairly manage deposits and lease obligations.
 
-The core on-chain logic is split into three modular Rust smart contracts located under `contracts/`:
+## Solution
+
+ChainRent is a Stellar-powered rental management platform that uses Soroban Smart Contracts to automate lease agreements, secure security deposits in escrow, track rent payments, and maintain trust scores for landlords and tenants.
+
+## Key Features
+
+- Freighter Wallet Integration
+- Soroban Smart Contracts
+- Lease Management
+- Security Deposit Escrow
+- Automated Rent Payments
+- Reputation & Trust Scores
+- Real-Time Event Tracking
+- Transaction History
+- Responsive Dashboard
+- CI/CD Pipeline
+
+## Tech Stack
+
+### Frontend
+
+- React
+- TypeScript
+- TailwindCSS
+- Vite
+- Framer Motion
+
+### Blockchain
+
+- Stellar SDK
+- Soroban Smart Contracts
+- Horizon API
+- Freighter Wallet
+
+### Smart Contracts
+
+- Rust
+- Soroban SDK v22
+
+### DevOps
+
+- GitHub Actions
+- Vercel
+
+## Architecture
 
 ```mermaid
-graph TD
-    Tenant[Tenant Wallet] -->|Approve Lease & Lock Deposit| LeaseContract[Lease Smart Contract]
-    LeaseContract -->|lock_deposit| EscrowContract[Escrow Smart Contract]
-    EscrowContract -->|transfer tokens| TokenContract[Stellar Asset Contract]
-    Landlord[Landlord Wallet] -->|Terminate & Release| LeaseContract
-    LeaseContract -->|release_deposit / refund_deposit| EscrowContract
-    LeaseContract -->|update_score| ReputationContract[Reputation Smart Contract]
+flowchart TD
+
+User["Tenant / Landlord"]
+
+Frontend["ChainRent Frontend
+React + TypeScript"]
+
+Wallet["Freighter Wallet"]
+
+Lease["Lease Contract"]
+
+Escrow["Escrow Contract"]
+
+Reputation["Reputation Contract"]
+
+Stellar["Stellar Network"]
+
+User --> Frontend
+Frontend --> Wallet
+Wallet --> Lease
+Lease --> Escrow
+Escrow --> Reputation
+
+Lease --> Stellar
+Escrow --> Stellar
+Reputation --> Stellar
 ```
 
-### 1. Lease Contract (`contracts/lease`)
-* Manages the lifecycle of agreements (`Created`, `Active`, `Terminated`).
-* Orchestrates deposit locking by calling the Escrow Contract.
-* Resolves agreements and triggers reputation updates by calling the Reputation Contract.
+## User Flow
 
-### 2. Escrow Contract (`contracts/escrow`)
-* Acts as a secure custody vault for security deposits.
-* Implements token transfer rules, moving locked deposits between tenant, landlord, or holding balance during dispute arbitration.
+Connect Wallet
 
-### 3. Reputation Contract (`contracts/reputation`)
-* Records successful lease completions to boost trust scores.
-* Applies penalizations or records breaches to dynamically calculate trust metrics.
+→ Create Property
 
----
+→ Create Lease
 
-## 📡 On-Chain Event Streaming & Logging
+→ Lock Deposit
 
-Soroban smart contracts publish events for all state changes. The frontend application listens to these events to dynamically update dashboards, timelines, and ledger history tables.
+→ Pay Rent
 
-```mermaid
-sequenceDiagram
-    participant Client as Frontend Client
-    participant Contract as Soroban Smart Contract
-    participant Horizon as Horizon / Soroban RPC
-    participant Stream as Event Stream Listener
-    participant UI as Dashboard / Timeline
+→ Release Deposit
 
-    Client->>Contract: Invoke contract call (e.g. approve_lease)
-    Contract->>Contract: Emit Event (e.g. DepositLocked)
-    Contract-->>Horizon: Publish Transaction
-    Stream->>Horizon: Poll/Stream Contract Events
-    Stream->>UI: Notify Subscribers (Pub/Sub)
-    UI->>UI: Update Ledger History Feed (Live!)
-```
+→ Update Reputation
 
-### Supported Event Types:
-* `LeaseCreated`: Published when a landlord defines lease terms.
-* `LeaseApproved`: Emitted when the tenant signs and activates the lease.
-* `DepositLocked`: Published when tokens are successfully moved into the Escrow Contract.
-* `DepositReleased`: Emitted when deposit is refunded to the tenant or released to the landlord.
-* `RentPaid`: Emitted on successful monthly rent payment settlement.
-* `ReputationUpdated`: Published when a user's trust score changes.
+## Smart Contracts
 
----
+### Lease Contract
 
-## 🛠️ Developer Setup & Commands
+- Create Lease
+- Approve Lease
+- Terminate Lease
 
-### Prerequisites
-* Rust toolchain (stable) with `wasm32-unknown-unknown` target.
-* Node.js v18+ and npm.
-* Soroban CLI (v22).
+### Escrow Contract
 
-### 1. Build and Test Smart Contracts
-Run checks and test suite locally:
+- Lock Deposit
+- Release Deposit
+- Refund Deposit
+
+### Reputation Contract
+
+- Update Trust Score
+- Track Lease Completion
+- Maintain Reputation Records
+
+## Screenshots
+
+### Landing Page
+
+<img width="1900" height="929" alt="image" src="https://github.com/user-attachments/assets/908b333f-8ec2-4953-9f4a-2b65f84c1c14" />
+
+### Dashboard
+
+<img width="1919" height="930" alt="image" src="https://github.com/user-attachments/assets/acadc539-492d-4e05-93ed-324bd7a350a0" />
+
+### Lease Management
+
+<img width="1918" height="939" alt="image" src="https://github.com/user-attachments/assets/37f2fb26-eb38-4e48-9a6c-02f95f765e4e" />
+
+### Escrow System
+
+<img width="1919" height="937" alt="image" src="https://github.com/user-attachments/assets/9e2695e0-544c-4d0f-a917-55dcdbca0719" />
+
+
+### Mobile UI
+
+<img width="380" height="823" alt="image" src="https://github.com/user-attachments/assets/74c10272-653d-43cb-b1de-f2123343d2bd" />
+
+
+### CI/CD
+
+<img width="1918" height="973" alt="image" src="https://github.com/user-attachments/assets/5a22530c-debe-4f52-873c-ef630169ae49" />
+
+
+## Stellar Level 3 Requirements
+
+- ✅ Advanced Smart Contracts
+- ✅ Inter-Contract Communication
+- ✅ Event Streaming
+- ✅ Mobile Responsive UI
+- ✅ Testing
+- ✅ CI/CD Pipeline
+- ✅ Production Architecture
+- ✅ Documentation
+
+## Setup
+
 ```bash
-# Clean build artifacts
-cargo clean --manifest-path contracts/Cargo.toml
-
-# Build contracts to WASM bytecode
-cargo build --manifest-path contracts/Cargo.toml --target wasm32-unknown-unknown --release
-
-# Run unit and inter-contract test suite
-cargo test --manifest-path contracts/Cargo.toml
-```
-
-### 2. Run Frontend Web App Locally
-Start the local development server:
-```bash
-# Install NPM dependencies
 npm install
-
-# Start Vite hot-reload server
 npm run dev
 ```
 
-### 3. Compile and Typecheck Frontend
+## Build
+
 ```bash
 npm run build
 ```
 
----
+## Team
 
-## 🚀 GitHub Actions CI/CD Pipeline
+DNA Coded
 
-The `.github/workflows/ci.yml` pipeline automatically runs on every push and pull request to verify compilation and test integrity:
-1. **Lint/Format Check**: Validates Rust code style.
-2. **Build Smart Contracts**: Compiles contracts to WASM target.
-3. **Execute Test Suite**: Runs all unit tests and inter-contract workflows.
-4. **Build Frontend**: Packages the React Vite application for deployment.
+Built on Stellar & Soroban.
