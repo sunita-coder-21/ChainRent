@@ -51,10 +51,7 @@ export const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({ child
       
       {/* Sidebar Navigation */}
       <aside className="bg-surface-container-low dark:bg-surface-container-lowest border-r border-outline-variant dark:border-outline fixed left-0 top-0 h-screen w-[260px] hidden lg:flex flex-col py-stack-lg px-4 gap-stack-md z-40">
-        <div className="flex items-center gap-stack-md px-4 mb-stack-lg">
-          <div className="w-10 h-10 bg-primary flex items-center justify-center rounded-lg text-on-primary">
-            <span className="material-symbols-outlined text-headline-md" style={{ fontVariationSettings: "'FILL' 1" }}>dataset</span>
-          </div>
+        <div className="flex items-center px-4 mb-stack-lg">
           <div>
             <h1 className="font-headline-md text-headline-md text-primary dark:text-primary-fixed font-bold leading-none">ChainRent</h1>
             <p className="font-body-sm text-body-sm text-on-surface-variant mt-1">Stellar Network</p>
@@ -328,10 +325,7 @@ export const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({ child
               className="bg-surface-container-low dark:bg-surface-container-lowest fixed left-0 top-0 h-screen w-[280px] z-50 flex flex-col py-stack-lg px-4 gap-stack-md shadow-2xl lg:hidden"
             >
               <div className="flex justify-between items-center px-4 mb-stack-lg">
-                <div className="flex items-center gap-stack-md">
-                  <div className="w-8 h-8 bg-primary flex items-center justify-center rounded-lg text-on-primary">
-                    <span className="material-symbols-outlined text-headline-sm" style={{ fontVariationSettings: "'FILL' 1" }}>dataset</span>
-                  </div>
+                <div className="flex items-center">
                   <h1 className="font-headline-md text-headline-md text-primary dark:text-primary-fixed font-bold leading-none">ChainRent</h1>
                 </div>
                 <button
