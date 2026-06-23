@@ -173,8 +173,5 @@ npm run dev
 npm run build
 ```
 
-## Team
-
-DNA Coded
 
 Built on Stellar & Soroban.
