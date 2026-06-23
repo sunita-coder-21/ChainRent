@@ -1,0 +1,62 @@
+name: ChainRent Soroban CI/CD
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build-and-test:
+    name: Build and Test Platform
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    # Rust Setup for Smart Contracts
+    - name: Set up Rust toolchain
+      uses: dtolnay/rust-toolchain@stable
+      with:
+        targets: wasm32-unknown-unknown
+
+    - name: Cache Cargo Dependencies
+      uses: actions/cache@v4
+      with:
+        path: |
+          ~/.cargo/bin/
+          ~/.cargo/registry/index/
+          ~/.cargo/registry/cache/
+          ~/.cargo/git/db/
+          contracts/target/
+        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.toml') }}
+
+    # Node Setup for Frontend
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-node: 20
+        cache: 'npm'
+
+    # Build and Test Soroban Smart Contracts
+    - name: Format Contracts Check
+      run: cargo fmt --manifest-path contracts/Cargo.toml --all -- --check
+      continue-on-error: true
+
+    - name: Build Contracts
+      run: cargo build --manifest-path contracts/Cargo.toml --target wasm32-unknown-unknown --release
+
+    - name: Run Contract Tests
+      run: cargo test --manifest-path contracts/Cargo.toml
+
+    # Install, Lint, and Build Frontend
+    - name: Install Frontend Dependencies
+      run: npm ci
+
+    - name: Lint Frontend
+      run: npm run lint
+      continue-on-error: true
+
+    - name: Build Frontend
+      run: npm run build
