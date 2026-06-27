@@ -239,9 +239,9 @@ export const LeaseService = {
     let hash = '';
 
     if (escrowSeed) {
-      // Build transaction from escrow back to tenant
+      // Build transaction to merge the escrow account back to tenant (refunds deposit & deletes escrow account)
       const escrowKeypair = Keypair.fromSecret(escrowSeed);
-      const xdr = await StellarService.buildPaymentTx(escrowKeypair.publicKey(), lease.tenantAddress, lease.depositAmount);
+      const xdr = await StellarService.buildAccountMergeTx(escrowKeypair.publicKey(), lease.tenantAddress);
       
       // Sign using the escrow seed
       const tx = TransactionBuilder.fromXDR(xdr, NetworkService.getNetworkPassphrase());

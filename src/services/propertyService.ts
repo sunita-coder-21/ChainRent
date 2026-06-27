@@ -16,7 +16,7 @@ export const PropertyService = {
     const newProperty: Property = {
       ...property,
       id: `p_${Date.now()}`,
-      ownerAddress: 'GD43KJH89SFD88SF9G7A98F7ASF79SDF79SD',
+      ownerAddress: 'GDWPNBABP2XCEA5X6W76YOBXHIQ2M5DY2WATOIK3F24UCNHN5MQN3RU3',
       ownerName: 'James D.',
       ownerRating: 5.0,
       verified: true

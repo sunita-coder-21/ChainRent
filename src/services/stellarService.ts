@@ -65,33 +65,65 @@ export const StellarService = {
   },
 
   async buildPaymentTx(fromAddress: string, toAddress: string, amount: number): Promise<string> {
-    const account = await this.fetchAccount(fromAddress);
-    const server = this.getServer();
-
-    let operation;
     try {
-      await server.loadAccount(toAddress);
-      operation = Operation.payment({
-        destination: toAddress,
-        asset: Asset.native(),
-        amount: amount.toFixed(7)
-      });
+      const account = await this.fetchAccount(fromAddress);
+      const server = this.getServer();
+
+      let operation;
+      try {
+        await server.loadAccount(toAddress);
+        operation = Operation.payment({
+          destination: toAddress,
+          asset: Asset.native(),
+          amount: amount.toFixed(7)
+        });
+      } catch (err: any) {
+        operation = Operation.createAccount({
+          destination: toAddress,
+          startingBalance: amount.toFixed(7)
+        });
+      }
+
+      const tx = new TransactionBuilder(account, {
+        fee: '100',
+        networkPassphrase: NetworkService.getNetworkPassphrase(),
+      })
+      .addOperation(operation)
+      .setTimeout(180)
+      .build();
+
+      return tx.toXDR();
     } catch (err: any) {
-      operation = Operation.createAccount({
-        destination: toAddress,
-        startingBalance: amount.toFixed(7)
-      });
+      if (err.message === 'ACCOUNT_NOT_FOUND') {
+        throw new Error('Your connected Stellar account is not funded on the Testnet. Please fund it using the Wallet Hub.');
+      }
+      throw err;
     }
+  },
 
-    const tx = new TransactionBuilder(account, {
-      fee: '100',
-      networkPassphrase: NetworkService.getNetworkPassphrase(),
-    })
-    .addOperation(operation)
-    .setTimeout(180)
-    .build();
+  async buildAccountMergeTx(fromAddress: string, toAddress: string): Promise<string> {
+    try {
+      const account = await this.fetchAccount(fromAddress);
 
-    return tx.toXDR();
+      const operation = Operation.accountMerge({
+        destination: toAddress
+      });
+
+      const tx = new TransactionBuilder(account, {
+        fee: '100',
+        networkPassphrase: NetworkService.getNetworkPassphrase(),
+      })
+      .addOperation(operation)
+      .setTimeout(180)
+      .build();
+
+      return tx.toXDR();
+    } catch (err: any) {
+      if (err.message === 'ACCOUNT_NOT_FOUND') {
+        throw new Error('Escrow account not found or has already been merged.');
+      }
+      throw err;
+    }
   },
 
   async submitTx(signedXdr: string): Promise<string> {

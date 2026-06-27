@@ -11,7 +11,7 @@ export const mockProperties: Property[] = [
     status: 'available',
     description: 'A high-end architectural penthouse apartment with floor-to-ceiling windows overlooking a twilight city skyline. The interior features clean lines, luxury materials like marble and dark wood, and soft ambient lighting. Includes high-speed fiber internet, multi-signature digital door lock, and premium kitchen appliances.',
     image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCsrAkT2yhKRMxhxo4bSDHV7Opd7m1amQ9MaUB5qV0RMgoSbxycR2FEYiakPadTQZSFUVD16YWxkLXL-bP_3OPvTRI2s1m_cEsrWAoErTA2YeYmjteM1l8dyyIqOv4NQomDK76dNPhQ_c3PWvzSOz_uV0hGZzxeWDJUafr5DPnQJzL2cHPO8p312nMsMkxh_7B6O8no3XPAxHPbxoGTajk5GTu7H8h71bJYuqmMw1oJ3Xo8AzMBztD5TJMICuCPjLKbcJBQV2SZo2k',
-    ownerAddress: 'GB2XR4L2KJH89SFD88SF9G7A98F7ASF79SDF79SD',
+    ownerAddress: 'GBDN6SFO3JOYSHHPIDXV5JQRVBKG5QEDUHG4M5MRKUTZAOSYTRLV3CZW',
     ownerName: 'Sarah Connor',
     ownerRating: 4.8,
     bedrooms: 3,
@@ -30,7 +30,7 @@ export const mockProperties: Property[] = [
     status: 'available',
     description: 'Modern, high-end apartment interior with floor-to-ceiling windows overlooking a sunset city skyline. The room is styled with minimalist Scandinavian furniture, soft neutral tones, and warm ambient lighting. Perfect for professionals looking for a high-quality, secure workspace at home.',
     image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDr30mNmKYdE4YcwW3bR5B0ITdw-yP00tyRVN3Z-nKSPx1poQtVh2SJ1f9B2SapZfI0v6XzSyqB91lQO5NzowYiqmL7cYM_rEikj6BeIzIk2cesWTn4SInYr3sUeU6hl9mfJaKz78CgDlBaxSJDjqcgql3bfwW8Yw_T7V7xgje2u0WUM3GkhgXCI1mGTVAHB5jxtmIJKf2Gvvuh-YwazRj8VJnZqsyeB2I7kuYR99yQQG05fQm4rApOVCoY0S7I8rtp3JvZno5I5I0',
-    ownerAddress: 'GB2XR4L2KJH89SFD88SF9G7A98F7ASF79SDF79SD',
+    ownerAddress: 'GBDN6SFO3JOYSHHPIDXV5JQRVBKG5QEDUHG4M5MRKUTZAOSYTRLV3CZW',
     ownerName: 'Sarah Connor',
     ownerRating: 4.8,
     bedrooms: 2,
@@ -49,7 +49,7 @@ export const mockProperties: Property[] = [
     status: 'available',
     description: 'A sleek, brutalist-inspired concrete villa with lush tropical gardens and a private turquoise swimming pool. The lighting is crisp midday sun, creating sharp, architectural shadows. Offering complete privacy, luxury finishes, and fully integrated smart home automation.',
     image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDyHF0q73SIslNnN-Req_l5NkC8ZbVyns-0RW7lyBm62RYX9grBcMdU3B63-HYQL2WSnDggP4DD-2Ix5sLpwmTWV3yN-rd70sdA1GiolavsrvMQVn61vsapI4BLFMZNpJjZLlT0bhu8B3d_e1kYXiz2lzSWIuXxv6h2pki8dnyalWQVZ6BvsnlkjJhphKyNjP3wu0Q2BFMwo96Jzvvru04YoAx2wWqOLY3MPjienOD1D2jaSU6YeHygyazkkPP4F0bMc9XtNLHnQCs',
-    ownerAddress: 'GD6T9K3WJH89SFD88SF9G7A98F7ASF79SDF79SD',
+    ownerAddress: 'GCIXI4NIXH33CZ45BNVV5FGHO67COXW6WE6ENNVIQA3TWAJBAMGO43AQ',
     ownerName: 'Marcus Aurelius',
     ownerRating: 4.9,
     bedrooms: 5,
@@ -68,7 +68,7 @@ export const mockProperties: Property[] = [
     status: 'rented',
     description: 'A high-tech co-working space and office loft with industrial-chic design, featuring large wooden tables, glass partitions, and vibrant interior plants. Ideal for startup offices or co-working platforms looking for verified leases and transparent terms.',
     image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBUOclOs6W3NwBg4mHL6mMM9uwc9n0Lz854wt6gsyQi1pLPK1wNQTNs1zV6ciPY-uU8QYTHzPa0VHZhH8Wd6elBVDIVb1K_Bzswq83WAHZTyrIBXtykU1EBh69ubchp6OVRWxVw9UWJh1w2LjMzEoUF_LdS9HBd-CI2kvHMQoxyNjNZ0IBZo9MQyEPnVuEP7jo3rhjYKre6awPaN13fubZjTThOgGFgLs1iwsC2XoZ8okzaqovqe3bRwkDa24ptQWnnasAa-WdNEto',
-    ownerAddress: 'GA1S3Q6XJH89SFD88SF9G7A98F7ASF79SDF79SD',
+    ownerAddress: 'GC3BYYQAM2TWKB7F77BITH4JZ7FT2R3QE5UOYF7X4C2QVMFHXNBIMMQE',
     ownerName: 'RealProp LLC',
     ownerRating: 4.5,
     bedrooms: 0,
@@ -87,7 +87,7 @@ export const mockProperties: Property[] = [
     status: 'available',
     description: 'A cozy, high-design tiny house set in a foggy pine forest with a large circular window and a warm, glowing interior. Retreat from the city and enjoy absolute privacy in this eco-friendly smart cabin, featuring solar power and composting systems.',
     image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAokQspQxrzw1G5ZSBiCnaJRmYKRLkk4K8cKPX0-bcENYeeDXpjYRz1o-rPg4kts1yhRrI2yerHn-HaGc9Rc6i6i0I54N0G-DJplCZCiXKi-yUmBsB-PqyLMaf6vLrH2_wzVHS1Cl8ahzHcK-FPXaUicAN5APCvjjzBaacncTtNN3XOig7mKe6Amqtx8RIaZB9pVvoPVdAGZxWj9AoJ2gB3ZHuvb0sacdXHGCYye5apTjPKzXzUPq4o3R5fWvJB6F6CZfB33VVgX4I',
-    ownerAddress: 'GC5F1V8MJH89SFD88SF9G7A98F7ASF79SDF79SD',
+    ownerAddress: 'GCWWPFZ2J7GW4ZXZBXABXRCDOPEYWHQXUT2TDRENLOCDHGPJFTTVWOTZ',
     ownerName: 'Emily K.',
     ownerRating: 4.7,
     bedrooms: 1,
@@ -106,7 +106,7 @@ export const mockProperties: Property[] = [
     status: 'rented',
     description: 'A modern luxury apartment building exterior at sunset, warm lighting hitting the glass facade. Clean lines and professional real estate aesthetic. Features dynamic temperature control, energy-efficient fixtures, and secure access.',
     image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDM6w_-09evof9BvKlCDadSFsJx4eTXcf5xWaQL1bHGME_AFUuCeVYeu9MN8ZpBNPBROzlMGVXjxB8pZj1yD1w7SYJ9KZ1WCIVOE2VOFsdqrZoRLfiCBcKHtZZYoht18sdFv7fPnAFGR8nnEORHeQSeNOn-b3uLIZ5ok5087kcljio0OsdriZ6_9m11p0WSpTwBgi294k9xdQArVEnI8TA0GMB8S_Bc-Ff_yfz1E9CSj6xIpHlHLb3SYBseBQyEA5HYKA9Dp0oaQPQ',
-    ownerAddress: 'GAC9KJH89SFD88SF9G7A98F7ASF79SDF79SD',
+    ownerAddress: 'GBDN6SFO3JOYSHHPIDXV5JQRVBKG5QEDUHG4M5MRKUTZAOSYTRLV3CZW',
     ownerName: 'Sarah Connor',
     ownerRating: 4.8,
     bedrooms: 2,
@@ -125,7 +125,7 @@ export const mockProperties: Property[] = [
     status: 'processing',
     description: 'A bright and airy interior of a minimalist studio apartment, sunlight streaming through large windows. Light wood floors, high-end corporate minimalist furniture. Just steps away from the beach, featuring ocean air circulation and modern amenities.',
     image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBLNMdyQ0dZiMkzMkYo2tLIUlemAFhzbs1e9_gBOwygdSgVuRf_oyyyjKTi89OP1eBHjgPSYE9fcDupweuKepFdqocsXkRFsOy8vrrKFWguG8a8Od-Tuqyisc_8ukj1gXcdSSzJW_hUT8jqbCnvrJCmnScJA-w67W6uoC7NEtX_g3ssWY2kSc55u9Zru-vCd14if0H_RWAqKCAC8L28lyTSU62hmGlKPlPBOfUkhGjzCtoeCd7x2WMsK3NRSsQSJLK_h5bbz-HTjak',
-    ownerAddress: 'GA88KJH89SFD88SF9G7A98F7ASF79SDF79SD',
+    ownerAddress: 'GC3BYYQAM2TWKB7F77BITH4JZ7FT2R3QE5UOYF7X4C2QVMFHXNBIMMQE',
     ownerName: 'RealProp LLC',
     ownerRating: 4.6,
     bedrooms: 1,
@@ -143,9 +143,9 @@ export const mockLeases: Lease[] = [
     propertyTitle: '123 Maple St, Unit 4B',
     propertyImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDM6w_-09evof9BvKlCDadSFsJx4eTXcf5xWaQL1bHGME_AFUuCeVYeu9MN8ZpBNPBROzlMGVXjxB8pZj1yD1w7SYJ9KZ1WCIVOE2VOFsdqrZoRLfiCBcKHtZZYoht18sdFv7fPnAFGR8nnEORHeQSeNOn-b3uLIZ5ok5087kcljio0OsdriZ6_9m11p0WSpTwBgi294k9xdQArVEnI8TA0GMB8S_Bc-Ff_yfz1E9CSj6xIpHlHLb3SYBseBQyEA5HYKA9Dp0oaQPQ',
     tenantName: 'James D.',
-    tenantAddress: 'GD43KJH89SFD88SF9G7A98F7ASF79SDF79SD',
+    tenantAddress: 'GDWPNBABP2XCEA5X6W76YOBXHIQ2M5DY2WATOIK3F24UCNHN5MQN3RU3',
     landlordName: 'Sarah Connor',
-    landlordAddress: 'GAC9KJH89SFD88SF9G7A98F7ASF79SDF79SD',
+    landlordAddress: 'GBDN6SFO3JOYSHHPIDXV5JQRVBKG5QEDUHG4M5MRKUTZAOSYTRLV3CZW',
     periodMonths: 12,
     monthsRemaining: 7,
     monthlyRent: 2400,
@@ -168,9 +168,9 @@ export const mockLeases: Lease[] = [
     propertyTitle: '789 Ocean Ave, Loft 2',
     propertyImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBLNMdyQ0dZiMkzMkYo2tLIUlemAFhzbs1e9_gBOwygdSgVuRf_oyyyjKTi89OP1eBHjgPSYE9fcDupweuKepFdqocsXkRFsOy8vrrKFWguG8a8Od-Tuqyisc_8ukj1gXcdSSzJW_hUT8jqbCnvrJCmnScJA-w67W6uoC7NEtX_g3ssWY2kSc55u9Zru-vCd14if0H_RWAqKCAC8L28lyTSU62hmGlKPlPBOfUkhGjzCtoeCd7x2WMsK3NRSsQSJLK_h5bbz-HTjak',
     tenantName: 'Marcus B.',
-    tenantAddress: 'GB7RKJH89SFD88SF9G7A98F7ASF79SDF79SD',
+    tenantAddress: 'GC2NDRKUBP2QJEM54Y3N6NNR6W4LYFAGUVHQKXX4N3KZNVYFZCSW7JTC',
     landlordName: 'RealProp LLC',
-    landlordAddress: 'GA88KJH89SFD88SF9G7A98F7ASF79SDF79SD',
+    landlordAddress: 'GC3BYYQAM2TWKB7F77BITH4JZ7FT2R3QE5UOYF7X4C2QVMFHXNBIMMQE',
     periodMonths: 6,
     monthsRemaining: 1,
     monthlyRent: 1850,
@@ -191,9 +191,9 @@ export const mockLeases: Lease[] = [
     propertyTitle: 'Garden Studio (Expired)',
     propertyImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAokQspQxrzw1G5ZSBiCnaJRmYKRLkk4K8cKPX0-bcENYeeDXpjYRz1o-rPg4kts1yhRrI2yerHn-HaGc9Rc6i6i0I54N0G-DJplCZCiXKi-yUmBsB-PqyLMaf6vLrH2_wzVHS1Cl8ahzHcK-FPXaUicAN5APCvjjzBaacncTtNN3XOig7mKe6Amqtx8RIaZB9pVvoPVdAGZxWj9AoJ2gB3ZHuvb0sacdXHGCYye5apTjPKzXzUPq4o3R5fWvJB6F6CZfB33VVgX4I',
     tenantName: 'Emily K.',
-    tenantAddress: 'GD2WKJH89SFD88SF9G7A98F7ASF79SDF79SD',
+    tenantAddress: 'GAF2BRPDKRFRTWYMQ2RNVB54NO5YWLQEYKVA2TQQBZIDQ5VESS4YFBML',
     landlordName: 'Sarah Connor',
-    landlordAddress: 'GAC9KJH89SFD88SF9G7A98F7ASF79SDF79SD',
+    landlordAddress: 'GBDN6SFO3JOYSHHPIDXV5JQRVBKG5QEDUHG4M5MRKUTZAOSYTRLV3CZW',
     periodMonths: 6,
     monthsRemaining: 0,
     monthlyRent: 1200,
@@ -218,8 +218,8 @@ export const mockTransactions: Transaction[] = [
     amount: 0,
     date: '2026-06-23T11:24:00Z',
     status: 'success',
-    fromAddress: 'GD43KJH89SFD88SF9G7A98F7ASF79SDF79SD',
-    toAddress: 'GAC9KJH89SFD88SF9G7A98F7ASF79SDF79SD'
+    fromAddress: 'GDWPNBABP2XCEA5X6W76YOBXHIQ2M5DY2WATOIK3F24UCNHN5MQN3RU3',
+    toAddress: 'GBDN6SFO3JOYSHHPIDXV5JQRVBKG5QEDUHG4M5MRKUTZAOSYTRLV3CZW'
   },
   {
     id: 'tx2',
@@ -228,7 +228,7 @@ export const mockTransactions: Transaction[] = [
     amount: 4800,
     date: '2026-06-23T08:15:00Z',
     status: 'success',
-    fromAddress: 'GD43KJH89SFD88SF9G7A98F7ASF79SDF79SD',
+    fromAddress: 'GDWPNBABP2XCEA5X6W76YOBXHIQ2M5DY2WATOIK3F24UCNHN5MQN3RU3',
     toAddress: 'G_ESCROW_MAPLE_4B_STELLAR_SMART_CONTRACT'
   },
   {
@@ -238,8 +238,8 @@ export const mockTransactions: Transaction[] = [
     amount: 2400,
     date: '2026-06-22T14:32:00Z',
     status: 'success',
-    fromAddress: 'GD43KJH89SFD88SF9G7A98F7ASF79SDF79SD',
-    toAddress: 'GAC9KJH89SFD88SF9G7A98F7ASF79SDF79SD'
+    fromAddress: 'GDWPNBABP2XCEA5X6W76YOBXHIQ2M5DY2WATOIK3F24UCNHN5MQN3RU3',
+    toAddress: 'GBDN6SFO3JOYSHHPIDXV5JQRVBKG5QEDUHG4M5MRKUTZAOSYTRLV3CZW'
   },
   {
     id: 'tx4',
@@ -249,7 +249,7 @@ export const mockTransactions: Transaction[] = [
     date: '2025-11-01T09:00:00Z',
     status: 'success',
     fromAddress: 'G_ESCROW_GARDEN_STUDIO_STELLAR_SMART_CONTRACT',
-    toAddress: 'GD2WKJH89SFD88SF9G7A98F7ASF79SDF79SD'
+    toAddress: 'GAF2BRPDKRFRTWYMQ2RNVB54NO5YWLQEYKVA2TQQBZIDQ5VESS4YFBML'
   },
   {
     id: 'tx5',
@@ -258,7 +258,7 @@ export const mockTransactions: Transaction[] = [
     amount: 3700,
     date: '2026-01-12T10:45:00Z',
     status: 'success',
-    fromAddress: 'GB7RKJH89SFD88SF9G7A98F7ASF79SDF79SD',
+    fromAddress: 'GC2NDRKUBP2QJEM54Y3N6NNR6W4LYFAGUVHQKXX4N3KZNVYFZCSW7JTC',
     toAddress: 'G_ESCROW_OCEAN_LOFT2_STELLAR_SMART_CONTRACT'
   }
 ];
@@ -336,4 +336,4 @@ export const mockReputation: Reputation = {
     }
   ]
 };
-export const defaultWalletAddress = 'GD43KJH89SFD88SF9G7A98F7ASF79SDF79SD';
+export const defaultWalletAddress = 'GDWPNBABP2XCEA5X6W76YOBXHIQ2M5DY2WATOIK3F24UCNHN5MQN3RU3';
