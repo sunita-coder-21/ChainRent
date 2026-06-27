@@ -5,12 +5,7 @@ import { StellarService } from './stellarService';
 import { WalletProviderService } from './walletProviderService';
 import { NetworkService } from './networkService';
 import { Keypair, TransactionBuilder } from '@stellar/stellar-sdk';
-import {
-  LeaseContractService,
-  EscrowContractService,
-  ReputationContractService,
-  TransactionContractService
-} from './contractService';
+import { SorobanService } from './sorobanService';
 
 export const LeaseService = {
   getLeases(): Lease[] {
@@ -62,7 +57,7 @@ export const LeaseService = {
     const txHash = await StellarService.submitTx(signedXdr);
 
     // Soroban Contract Integration
-    await LeaseContractService.initializeLease(
+    await SorobanService.createLease(
       propertyId,
       tenantAddress,
       property.ownerAddress,
@@ -70,7 +65,7 @@ export const LeaseService = {
       BigInt(property.deposit),
       periodMonths
     );
-    await EscrowContractService.lockDeposit(leaseId, tenantAddress, BigInt(property.deposit));
+    await SorobanService.lockDeposit(leaseId, tenantAddress, BigInt(property.deposit));
 
     const timeline: LeaseTimelineEvent[] = [
       {
@@ -192,7 +187,7 @@ export const LeaseService = {
     const hash = await StellarService.submitTx(signedXdr);
 
     // Soroban Contract Integration
-    await TransactionContractService.payRent(leaseId, lease.tenantAddress, lease.landlordAddress, BigInt(lease.monthlyRent));
+    await SorobanService.payRent(leaseId, lease.tenantAddress, lease.landlordAddress, BigInt(lease.monthlyRent));
 
     // Add timeline event
     const newEvent: LeaseTimelineEvent = {
@@ -260,9 +255,9 @@ export const LeaseService = {
     }
 
     // Soroban Contract Integration
-    await EscrowContractService.releaseDeposit(leaseId, lease.tenantAddress, BigInt(lease.depositAmount), []);
-    await ReputationContractService.recordSettlement(lease.tenantAddress, 'tenant');
-    await ReputationContractService.recordSettlement(lease.landlordAddress, 'landlord');
+    await SorobanService.releaseDeposit(leaseId, lease.tenantAddress, BigInt(lease.depositAmount), []);
+    await SorobanService.updateReputation(lease.tenantAddress, 'tenant', true);
+    await SorobanService.updateReputation(lease.landlordAddress, 'landlord', true);
 
     // Update lease status
     lease.status = 'settled';

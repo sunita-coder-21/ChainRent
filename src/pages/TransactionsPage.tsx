@@ -3,6 +3,7 @@ import { TransactionService } from '../services/transactionService';
 import { TableSkeleton, EmptyState } from '../components/FeedbackStates';
 import { useToast } from '../context/ToastContext';
 import { ExplorerService } from '../services/explorerService';
+import { CONTRACT_IDS } from '../services/sorobanService';
 
 export const TransactionsPage: React.FC = () => {
   const [transactions] = useState(() => TransactionService.getTransactions());
@@ -177,83 +178,79 @@ export const TransactionsPage: React.FC = () => {
               <table className="w-full text-left border-collapse">
                 <thead>
                   <tr className="border-b border-outline-variant dark:border-outline bg-surface-container-low dark:bg-surface-container-high">
-                    <th className="p-4 font-label-md text-label-md font-bold text-on-surface dark:text-on-surface">Stellar Ledger Operation</th>
-                    <th className="p-4 font-label-md text-label-md font-bold text-on-surface dark:text-on-surface">Date</th>
-                    <th className="p-4 font-label-md text-label-md font-bold text-on-surface dark:text-on-surface">Ledger Hash</th>
-                    <th className="p-4 font-label-md text-label-md font-bold text-on-surface dark:text-on-surface">From Address</th>
-                    <th className="p-4 font-label-md text-label-md font-bold text-on-surface dark:text-on-surface">To Address</th>
-                    <th className="p-4 font-label-md text-label-md font-bold text-on-surface dark:text-on-surface">Amount</th>
-                    <th className="p-4 font-label-md text-label-md font-bold text-on-surface dark:text-on-surface">Status</th>
+                    <th className="p-4 font-label-sm text-label-sm font-bold text-on-surface dark:text-on-surface">Operation Type</th>
+                    <th className="p-4 font-label-sm text-label-sm font-bold text-on-surface dark:text-on-surface">Contract Invoked</th>
+                    <th className="p-4 font-label-sm text-label-sm font-bold text-on-surface dark:text-on-surface">Contract ID</th>
+                    <th className="p-4 font-label-sm text-label-sm font-bold text-on-surface dark:text-on-surface">Transaction Hash</th>
+                    <th className="p-4 font-label-sm text-label-sm font-bold text-on-surface dark:text-on-surface">Network</th>
+                    <th className="p-4 font-label-sm text-label-sm font-bold text-on-surface dark:text-on-surface">Amount</th>
+                    <th className="p-4 font-label-sm text-label-sm font-bold text-on-surface dark:text-on-surface">Status</th>
+                    <th className="p-4 font-label-sm text-label-sm font-bold text-on-surface dark:text-on-surface">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {paginatedTxs.map((tx) => (
-                    <tr key={tx.id} className="border-b border-outline-variant dark:border-outline hover:bg-surface-variant/30 transition-colors">
-                      <td className="p-4">
-                        <div className="flex items-center gap-3">
-                          <div className="w-9 h-9 bg-primary/10 rounded-lg flex items-center justify-center text-primary dark:text-primary-fixed">
-                            <span className="material-symbols-outlined text-[18px]" aria-hidden="true">{getTxIcon(tx.type)}</span>
-                          </div>
-                          <span className="font-label-sm text-label-sm font-bold text-on-surface dark:text-on-surface">
-                            {getTxTypeLabel(tx.type)}
-                          </span>
-                        </div>
-                      </td>
-                      <td className="p-4 text-xs text-on-surface-variant dark:text-on-surface-variant">
-                        {new Date(tx.date).toLocaleString()}
-                      </td>
-                      <td className="p-4 font-mono text-xs text-on-surface-variant dark:text-on-surface-variant">
-                        <div className="flex items-center gap-1.5">
-                          <span className="truncate max-w-[120px]">{tx.hash}</span>
-                          <button
-                            onClick={() => handleCopy(tx.id, tx.hash)}
-                            className="hover:text-primary transition-colors focus:outline-none focus:ring-1 focus:ring-primary p-0.5 rounded"
-                            title="Copy Tx Hash"
-                            aria-label={`Copy transaction hash ${tx.hash}`}
-                          >
-                            <span className="material-symbols-outlined text-[16px]">
-                              {copiedTxId === tx.id ? 'check' : 'content_copy'}
+                  {paginatedTxs.map((tx) => {
+                    const isEscrowTx = tx.type === 'deposit_locked' || tx.type === 'deposit_released';
+                    const contractInvoked = isEscrowTx ? 'Escrow Contract' : 'Lease Contract';
+                    const contractId = isEscrowTx ? CONTRACT_IDS.ESCROW : CONTRACT_IDS.LEASE;
+                    const network = 'Testnet';
+                    
+                    return (
+                      <tr key={tx.id} className="border-b border-outline-variant dark:border-outline hover:bg-surface-variant/30 transition-colors">
+                        <td className="p-4">
+                          <div className="flex items-center gap-3">
+                            <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center text-primary dark:text-primary-fixed">
+                              <span className="material-symbols-outlined text-[16px]" aria-hidden="true">{getTxIcon(tx.type)}</span>
+                            </div>
+                            <span className="font-label-sm text-label-sm font-bold text-on-surface dark:text-on-surface">
+                              {getTxTypeLabel(tx.type)}
                             </span>
-                          </button>
-                          <a
-                            href={ExplorerService.getTransactionUrl(tx.hash)}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="hover:text-primary transition-colors focus:outline-none focus:ring-1 focus:ring-primary p-0.5 rounded"
-                            title="View on Stellar Expert Explorer"
-                          >
-                            <span className="material-symbols-outlined text-[16px]">open_in_new</span>
-                          </a>
-                        </div>
-                      </td>
-                      <td className="p-4 font-mono text-xs text-on-surface-variant dark:text-on-surface-variant truncate max-w-[100px]" title={tx.fromAddress}>
-                        <a
-                          href={ExplorerService.getAccountUrl(tx.fromAddress)}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="hover:underline hover:text-primary transition-colors"
-                        >
-                          {tx.fromAddress}
-                        </a>
-                      </td>
-                      <td className="p-4 font-mono text-xs text-on-surface-variant dark:text-on-surface-variant truncate max-w-[100px]" title={tx.toAddress}>
-                        <a
-                          href={ExplorerService.getAccountUrl(tx.toAddress)}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="hover:underline hover:text-primary transition-colors"
-                        >
-                          {tx.toAddress}
-                        </a>
-                      </td>
-                      <td className="p-4 font-label-sm text-label-sm font-bold text-on-surface dark:text-on-surface">
-                        {tx.amount > 0 ? `${tx.amount.toLocaleString()} XLM` : '0 XLM'}
-                      </td>
-                      <td className="p-4 text-xs font-bold text-green-500">
-                        SUCCESS
-                      </td>
-                    </tr>
-                  ))}
+                          </div>
+                        </td>
+                        <td className="p-4 text-xs font-semibold text-on-surface">
+                          {contractInvoked}
+                        </td>
+                        <td className="p-4 font-mono text-xs text-on-surface-variant dark:text-on-surface-variant truncate max-w-[120px]" title={contractId}>
+                          {contractId}
+                        </td>
+                        <td className="p-4 font-mono text-xs text-on-surface-variant dark:text-on-surface-variant truncate max-w-[120px]" title={tx.hash}>
+                          {tx.hash}
+                        </td>
+                        <td className="p-4 text-xs font-semibold text-primary dark:text-primary-fixed">
+                          {network}
+                        </td>
+                        <td className="p-4 font-label-sm text-label-sm font-bold text-on-surface dark:text-on-surface">
+                          {tx.amount > 0 ? `${tx.amount.toLocaleString()} XLM` : '0 XLM'}
+                        </td>
+                        <td className="p-4 text-xs font-bold text-green-500">
+                          SUCCESS
+                        </td>
+                        <td className="p-4">
+                          <div className="flex items-center gap-2">
+                            <button
+                              onClick={() => handleCopy(tx.id, tx.hash)}
+                              className="p-1 border border-outline-variant dark:border-outline hover:bg-surface-variant/50 rounded text-on-surface transition-colors flex items-center"
+                              title="Copy Hash"
+                              aria-label={`Copy transaction hash ${tx.hash}`}
+                            >
+                              <span className="material-symbols-outlined text-[14px]">
+                                {copiedTxId === tx.id ? 'check' : 'content_copy'}
+                              </span>
+                            </button>
+                            <a
+                              href={ExplorerService.getTransactionUrl(tx.hash)}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="p-1 border border-outline-variant dark:border-outline hover:bg-surface-variant/50 rounded text-on-surface transition-colors flex items-center"
+                              title="Open Explorer"
+                            >
+                              <span className="material-symbols-outlined text-[14px]">open_in_new</span>
+                            </a>
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
             </div>

@@ -143,19 +143,19 @@ Connect Wallet
 ### Lease Contract
 
 ```text
-PASTE_LEASE_CONTRACT_ID
+CCDQLW2CKRUL4OCQDIW7SQ5VOT3IIMFTIZST3KVNAO3J5M6HJDLUTNF3
 ```
 
 ### Escrow Contract
 
 ```text
-PASTE_ESCROW_CONTRACT_ID
+CDMLNC5EUTGZDAPOJSKGYGGOVPOSUFMRUXIWUB4C3ERJZIQSMXMDDI6N
 ```
 
 ### Reputation Contract
 
 ```text
-PASTE_REPUTATION_CONTRACT_ID
+CDWJQYLPI6SBNGTUGAN4V3SA7GEE6LZIOMMU46CQPM4NHDTSGGU47HQO
 ```
 
 ---
@@ -165,13 +165,13 @@ PASTE_REPUTATION_CONTRACT_ID
 ### Transaction Hash
 
 ```text
-PASTE_REAL_TRANSACTION_HASH
+be4425c1c8cd263d23495054c3105de3484b23b9c2a593b7948a8937928c2aee
 ```
 
 ### Stellar Expert Link
 
 ```text
-https://stellar.expert/explorer/testnet/tx/PASTE_TRANSACTION_HASH
+https://stellar.expert/explorer/testnet/tx/be4425c1c8cd263d23495054c3105de3484b23b9c2a593b7948a8937928c2aee
 ```
 
 ---
@@ -204,15 +204,15 @@ https://stellar.expert/explorer/testnet/tx/PASTE_TRANSACTION_HASH
 
 ### Wallet Connected
 
-PASTE_WALLET_CONNECTED_SCREENSHOT_LINK
+![Wallet Connected](public/screenshots/wallet_connected.png)
 
 ### Successful Contract Interaction
 
-PASTE_CONTRACT_INTERACTION_SCREENSHOT_LINK
+![Contract Interaction](public/screenshots/contract_interaction.png)
 
 ### Test Output (3+ Passing Tests)
 
-PASTE_TEST_SCREENSHOT_LINK
+![Test Output](public/screenshots/test_results.png)
 
 ---
 

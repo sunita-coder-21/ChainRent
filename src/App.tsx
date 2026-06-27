@@ -22,6 +22,7 @@ const TransactionsPage = React.lazy(() => import('./pages/TransactionsPage').the
 const ReputationPage = React.lazy(() => import('./pages/ReputationPage').then(m => ({ default: m.ReputationPage })));
 const WalletPage = React.lazy(() => import('./pages/WalletPage').then(m => ({ default: m.WalletPage })));
 const SettingsPage = React.lazy(() => import('./pages/SettingsPage').then(m => ({ default: m.SettingsPage })));
+const VerificationPage = React.lazy(() => import('./pages/VerificationPage').then(m => ({ default: m.VerificationPage })));
 const NotFoundPage = React.lazy(() => import('./pages/NotFoundPage').then(m => ({ default: m.NotFoundPage })));
 
 // Premium loading fallback for lazy loaded routes
@@ -141,6 +142,16 @@ export const App: React.FC = () => {
                               <PropertyDetailsPage />
                             </DashboardLayout>
                           </ProtectedRoute>
+                        }
+                      />
+
+                      {/* Reviewer Verification Page */}
+                      <Route
+                        path="/verification"
+                        element={
+                          <DashboardLayout>
+                            <VerificationPage />
+                          </DashboardLayout>
                         }
                       />
 

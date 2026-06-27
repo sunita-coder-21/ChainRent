@@ -26,6 +26,7 @@ export const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({ child
     { name: 'Transactions', path: '/dashboard/transactions', icon: 'payments' },
     { name: 'Reputation', path: '/dashboard/reputation', icon: 'star' },
     { name: 'Wallet', path: '/dashboard/wallet', icon: 'account_balance_wallet' },
+    { name: 'Verification Audit', path: '/verification', icon: 'verified_user' },
   ];
 
   const unreadNotifs = notifications.filter(n => !n.read).length;

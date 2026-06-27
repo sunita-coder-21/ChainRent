@@ -8,6 +8,9 @@ import { getFromStorage, KEYS } from '../services/db';
 import { DashboardSkeleton, EmptyState } from '../components/FeedbackStates';
 import { ContractService } from '../services/contractService';
 import type { SorobanEvent } from '../services/contractService';
+import { ContractStatusCard } from '../components/ContractStatusCard';
+import { ContractAuditService } from '../services/contractAuditService';
+import type { ContractAuditLog } from '../services/contractAuditService';
 
 export const DashboardOverview: React.FC = () => {
   const { wallet } = useWallet();
@@ -19,11 +22,14 @@ export const DashboardOverview: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [profileName, setProfileName] = useState('James D.');
   const [events, setEvents] = useState<SorobanEvent[]>([]);
+  const [auditLogs, setAuditLogs] = useState<ContractAuditLog[]>([]);
 
   useEffect(() => {
     setEvents(ContractService.getEvents().slice(0, 5));
+    setAuditLogs(ContractAuditService.getLogs().slice(0, 5));
     const unsubscribe = ContractService.subscribeToEvents(() => {
       setEvents(ContractService.getEvents().slice(0, 5));
+      setAuditLogs(ContractAuditService.getLogs().slice(0, 5));
     });
     
     const timer = setTimeout(() => {
@@ -234,6 +240,8 @@ export const DashboardOverview: React.FC = () => {
         
         {/* Right Column - Activity & Actions */}
         <div className="space-y-6">
+          <ContractStatusCard />
+
           <h3 className="font-headline-md text-headline-md font-bold text-on-surface dark:text-on-surface">Quick Actions</h3>
           <div className="grid grid-cols-2 gap-3">
             <button 
@@ -300,6 +308,51 @@ export const DashboardOverview: React.FC = () => {
                       {evt.data.amount || evt.data.depositAmount || evt.data.monthlyRent ? `${parseFloat(evt.data.amount || evt.data.depositAmount || evt.data.monthlyRent).toLocaleString()} XLM` : '0  XLM'}
                     </p>
                     <p className="text-[10px] text-green-500 font-bold">Verified Event</p>
+                  </div>
+                </div>
+              ))
+            )}
+          </div>
+
+          {/* Soroban Contract Call Audit Section */}
+          <div className="flex justify-between items-center pt-4">
+            <h3 className="font-headline-md text-headline-md font-bold text-on-surface dark:text-on-surface">Soroban Call Audits</h3>
+            <Link to="/verification" className="text-primary dark:text-primary-fixed font-label-sm text-label-sm hover:underline">
+              Verify Proof
+            </Link>
+          </div>
+
+          <div className="bg-surface-container-lowest dark:bg-surface-container border border-outline-variant dark:border-outline rounded-2xl p-4 space-y-3">
+            {auditLogs.length === 0 ? (
+              <p className="text-body-sm text-on-surface-variant dark:text-on-surface-variant text-center py-6">No contract interaction logs found.</p>
+            ) : (
+              auditLogs.map((log) => (
+                <div key={log.id} className="flex justify-between items-start p-2 rounded-lg hover:bg-surface-variant/30 transition-colors">
+                  <div className="flex items-start gap-3">
+                    <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary dark:text-primary-fixed mt-0.5">
+                      <span className="material-symbols-outlined text-[20px]">terminal</span>
+                    </div>
+                    <div className="text-left">
+                      <p className="font-label-sm text-label-sm font-bold text-on-surface dark:text-on-surface">
+                        {log.contractName}
+                      </p>
+                      <p className="font-mono text-[10px] text-primary dark:text-primary-fixed mt-0.5">
+                        {log.functionName}()
+                      </p>
+                      <p className="text-[9px] text-on-surface-variant dark:text-on-surface-variant mt-0.5">
+                        {new Date(log.timestamp).toLocaleTimeString()}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
+                      log.success ? 'bg-green-500/10 text-green-500' : 'bg-red-500/10 text-red-500'
+                    }`}>
+                      {log.success ? 'SUCCESS' : 'FAILED'}
+                    </span>
+                    <p className="font-mono text-[9px] text-on-surface-variant dark:text-on-surface-variant mt-1.5 truncate max-w-[80px]" title={log.transactionHash}>
+                      {log.transactionHash.substring(0, 8)}...
+                    </p>
                   </div>
                 </div>
               ))
