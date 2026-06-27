@@ -2,7 +2,7 @@
 
 Secure Rental Agreements. Trustless Deposits.
 
-🌐 **Live Demo:** https://chainrent-stellar.vercel.app
+🌐 **Live Demo:** https://chainrent.netlify.app/
 
 🎥 **Demo Video:** https://drive.google.com/file/d/1Z9ZvsF9TzfIZqCQStb6zPhQF1XIKs3nN/view
 
