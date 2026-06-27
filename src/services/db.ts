@@ -63,6 +63,17 @@ export const resetKeyToDefault = (key: string): void => {
 
 export const initStorage = () => {
   try {
+    // Purge outdated mock data with malformed Stellar addresses if present
+    const propertiesData = localStorage.getItem(KEYS.PROPERTIES);
+    if (propertiesData && propertiesData.includes('KJH89SFD88SF9G7')) {
+      console.log('Purging legacy malformed mock data from localStorage...');
+      localStorage.removeItem(KEYS.PROPERTIES);
+      localStorage.removeItem(KEYS.LEASES);
+      localStorage.removeItem(KEYS.TRANSACTIONS);
+      localStorage.removeItem(KEYS.NOTIFICATIONS);
+      localStorage.removeItem(KEYS.REPUTATION);
+    }
+
     if (!localStorage.getItem(KEYS.PROPERTIES)) {
       resetKeyToDefault(KEYS.PROPERTIES);
     }
