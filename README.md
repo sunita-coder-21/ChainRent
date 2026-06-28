@@ -200,7 +200,7 @@ https://stellar.expert/explorer/testnet/tx/be4425c1c8cd263d23495054c3105de3484b2
 
 ### CI/CD Pipeline
 
-![CI/CD](https://github.com/user-attachments/assets/5a22530c-debe-4f52-873c-ef630169ae49)
+<img width="1901" height="977" alt="image" src="https://github.com/user-attachments/assets/943bb31a-e218-44ff-9288-3d2cdd28c4bf" />
 
 ### Wallet Connected
 
